@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    </script>
+    <meta name="theme-color" content="#123d32" />
+    <meta
+      name="description"
+      content="Découvrez Keur Ana-Fi, Maison des Bolongs à Sokone, au cœur du Sine-Saloum. Hébergement, restaurant et art de vivre au fil des bolongs."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_SN" />
+    <meta property="og:title" content="Keur Ana-Fi — Maison des Bolongs" />
+    <meta
+      property="og:description"
+      content="Votre escale au cœur du Sine-Saloum, à Sokone."
+    />
+    <title>Keur Ana-Fi — Maison des Bolongs à Sokone</title>
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      #app-loading-screen {
+        position: fixed;
+        z-index: 100000;
+        inset: 0;
+        display: grid;
+        min-height: 100vh;
+        min-height: 100svh;
+        place-items: center;
+        overflow: hidden;
+        color: #fff;
+        background:
+          radial-gradient(circle at 18% 20%, rgb(206 177 111 / 32%), transparent 24rem),
+          radial-gradient(circle at 82% 78%, rgb(103 145 124 / 35%), transparent 26rem),
+          linear-gradient(125deg, #0d3329 0%, #1b5141 38%, #8d7447 68%, #123d32 100%);
+        background-size: 150% 150%, 150% 150%, 300% 300%;
+        animation: app-loading-gradient 7s ease-in-out infinite;
+        transition: opacity 300ms ease, visibility 300ms ease;
+      }
+
+      #app-loading-screen::before,
+      #app-loading-screen::after {
+        position: absolute;
+        width: 32rem;
+        height: 32rem;
+        border: 1px solid rgb(255 255 255 / 12%);
+        border-radius: 50%;
+        content: "";
+        pointer-events: none;
+      }
+
+      #app-loading-screen::before {
+        top: -21rem;
+        right: -10rem;
+        box-shadow:
+          0 0 0 28px rgb(255 255 255 / 3%),
+          0 0 0 58px rgb(255 255 255 / 2%);
+      }
+
+      #app-loading-screen::after {
+        bottom: -23rem;
+        left: -12rem;
+        box-shadow:
+          0 0 0 32px rgb(255 255 255 / 3%),
+          0 0 0 64px rgb(255 255 255 / 2%);
+      }
+
+      #app-loading-screen.is-hidden {
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .app-loading-content {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        min-width: min(86vw, 420px);
+        padding: 46px 34px 38px;
+        border: 1px solid rgb(255 255 255 / 18%);
+        border-radius: 28px;
+        background: rgb(9 48 38 / 24%);
+        box-shadow: 0 24px 70px rgb(3 24 18 / 24%);
+        backdrop-filter: blur(16px);
+        text-align: center;
+        animation: app-loading-content-in 700ms cubic-bezier(.22,.8,.28,1) both;
+      }
+
+      .app-loading-brand {
+        font-family: "Playfair Display", Georgia, serif;
+        font-size: clamp(28px, 7vw, 44px);
+        letter-spacing: -0.035em;
+        text-shadow: 0 8px 28px rgb(3 24 18 / 22%);
+      }
+
+      .app-loading-brand::after {
+        display: block;
+        width: 42px;
+        height: 2px;
+        margin: 14px auto 0;
+        border-radius: 99px;
+        background: #ceb16f;
+        content: "";
+      }
+
+      .app-loading-message {
+        color: rgb(255 255 255 / 82%);
+        font-family: "DM Sans", Arial, sans-serif;
+        font-size: 14px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .app-loading-spinner {
+        width: 46px;
+        height: 46px;
+        border: 2px solid rgb(255 255 255 / 18%);
+        border-top-color: #f1dba8;
+        border-right-color: rgb(241 219 168 / 55%);
+        border-radius: 50%;
+        box-shadow: 0 0 28px rgb(241 219 168 / 12%);
+        animation: app-loading-spin 900ms linear infinite;
+      }
+
+      @keyframes app-loading-spin {
+        to { transform: rotate(360deg); }
+      }
+
+      @keyframes app-loading-gradient {
+        0%, 100% {
+          background-position: 0% 20%, 100% 80%, 0% 50%;
+        }
+        50% {
+          background-position: 100% 80%, 0% 20%, 100% 50%;
+        }
+      }
+
+      @keyframes app-loading-content-in {
+        from {
+          opacity: 0;
+          transform: translateY(14px) scale(.97);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .app-loading-content {
+          min-width: min(84vw, 360px);
+          padding: 38px 24px 32px;
+        }
+
+        .app-loading-message {
+          max-width: 240px;
+          font-size: 12px;
+          line-height: 1.6;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        #app-loading-screen {
+          animation-duration: 14s;
+        }
+
+        .app-loading-content {
+          animation: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app-loading-screen" role="status" aria-live="polite" aria-label="Chargement du site">
+      <div class="app-loading-content">
+        <div class="app-loading-brand">Keur Ana-Fi</div>
+        <div class="app-loading-spinner" aria-hidden="true"></div>
+        <div class="app-loading-message">Patientez, chargement en cours…</div>
+      </div>
+    </div>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
